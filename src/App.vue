@@ -2,16 +2,7 @@
   <div id="app">
     <!-- narBar-->
 
-    <div class="burger" ><span></span></div>
-    <!--Les liens -->
-
-    <router-link to="/">Home</router-link>
-    <router-link to="/boutique">Boutique</router-link>
-    <router-link to="/jeux">Jeux</router-link>
-    <router-link to="/contact">Contact</router-link>
-    <router-view/>
-
-
+    <div class="burger" v-on:click="openNav"><span></span></div>
 
     <!--menu-->
     <div id="myNav" class="overlay">
@@ -20,16 +11,15 @@
       <a href="javascript:void(0)" class="closebtn" v-on:click="closeNav">&times;</a>
 
       <div class="overlay-content">
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+        <router-link to="/">Home</router-link>
+        <router-link to="/boutique">Boutique</router-link>
+        <router-link to="/jeux">Jeux</router-link>
+        <router-link to="/contact">Contact</router-link>
+        <router-view/>
       </div>
 
     </div>
 
-
-    <span v-on:click="openNav">open</span>
 
 
 
@@ -184,6 +174,7 @@ export default {
   methods: {
     openNav: function (){
       document.getElementById("myNav").style.width = "100%";
+
 },
     closeNav: function (){
       document.getElementById("myNav").style.width = "0%";
