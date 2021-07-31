@@ -2,30 +2,35 @@
   <div id="app">
     <!-- narBar-->
 
-
+    <div class="burger" ><span></span></div>
     <!--Les liens -->
 
+    <router-link to="/">Home</router-link>
+    <router-link to="/boutique">Boutique</router-link>
+    <router-link to="/jeux">Jeux</router-link>
+    <router-link to="/contact">Contact</router-link>
+    <router-view/>
 
 
 
     <!--menu-->
     <div id="myNav" class="overlay">
 
-      <div class="burger">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><span></span></a>
-      </div>
+
+      <a href="javascript:void(0)" class="closebtn" v-on:click="closeNav">&times;</a>
 
       <div class="overlay-content">
-
-        <router-link to="/">Home</router-link>
-        <router-link to="/boutique">Boutique</router-link>
-        <router-link to="/jeux">Jeux</router-link>
-        <router-link to="/contact">Contact</router-link>
-        <router-view/>
-
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
       </div>
 
     </div>
+
+
+    <span v-on:click="openNav">open</span>
+
 
 
   </div>
@@ -38,10 +43,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
 }
 
 #nav a {
@@ -105,28 +106,46 @@
   transform: translateY(0px) rotateZ(-45deg);
 }
 
+
+
 /*interieur du menu*/
 
-.overlay{
+
+
+span {
+  display: block;
+  width: 300px;
+  height: 100px;
+  line-height: 100px;
+  background: aliceblue;
+  font-size: 3em;
+  font-family: 'Lato';
+
+}
+
+.overlay {
+
   height: 100%;
   width: 0;
   position: fixed;
   z-index: 1;
   left: 0;
   top: 0;
-  background-color: black;
-  /*overflow-x: hidden;*/
+  background-color: rgba(0,0,0, 0.9);
+  overflow-x: hidden;
   transition: 0.5s;
 }
 
-.overlay-content{
+.overlay-content {
   position: relative;
   top: 30%;
   width: 100%;
   text-align: center;
+
 }
 
-.overlay router-link{
+
+.overlay a {
   padding: 8px;
   text-decoration: none;
   font-size: 36px;
@@ -135,37 +154,44 @@
   transition: 0.3s;
 }
 
-.overlay a:hover, .overlay a:focus{
+
+.overlay a:hover, .overlay a:focus {
   color: #f1f1f1;
 }
 
-.overlay .closebtn{
+
+.overlay .closebtn {
   position: absolute;
   top: 20px;
   right: 45px;
   font-size: 60px;
 }
 
+
+
 </style>
 
 <script>
 export default {
-  computed: {
-    openNav(){
-      return document.getElementById("myNav").style.width = "100%";
-
-    }
-  },
   mounted(){
     const burger = document.querySelector('.burger');
 
     burger.addEventListener('click', ()=> {
       burger.classList.toggle('active');
     } );
+  },
+
+  methods: {
+    openNav: function (){
+      document.getElementById("myNav").style.width = "100%";
+},
+    closeNav: function (){
+      document.getElementById("myNav").style.width = "0%";
+}
   }
 
-
-
-
 }
+
+
+
 </script>
