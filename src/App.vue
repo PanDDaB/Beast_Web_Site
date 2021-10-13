@@ -556,8 +556,8 @@ template {
 
 <script>
 
-
 export default {
+
   methods: {
     openNav:  function () {
       document.getElementById("sideNavigation").style.width = "250px";
